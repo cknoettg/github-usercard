@@ -68,5 +68,35 @@ function cardCreator(dataObj){
   let cardInfo = document.createElement("div");
   cardInfo.classList.add("card-info");
   card.appendChild(cardInfo);
-  
+  let h3 = document.createElement("h3");
+  h3.classList.add("name");
+  h3.textContent = dataObj.name;
+  let uname = document.createElement("p");
+  uname.classList.add("username");
+  uname.textContent = dataObj.login;
+  let location = document.createElement("p");
+  location.textContent = dataObj.location;
+  let profile = document.createElement("p");
+  let anchor = document.createElement("a");
+  profile.appendChild(anchor);
+  anchor.href = dataObj.html_url;
+  let followers = document.createElement("p");
+  followers.textContent = dataObj.followers;
+  let following = document.createElement("p");
+  following.textContent = dataObj.following;
+  let bio = document.createElement("p");
+  bio.textContent = dataObj.bio;
+  cardInfo.appendChild(h3);
+  cardInfo.appendChild(uname);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  cardInfo.appendChild(anchor);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+  return card;
 };
+
+cardCreator(myObj);
+
