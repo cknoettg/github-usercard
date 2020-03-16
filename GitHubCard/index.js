@@ -3,7 +3,14 @@
            https://api.github.com/users/<your name>
 */
 
-let myObj = axios.get('https://api.github.com/users/cknoettg');
+let myObj = axios.get('https://api.github.com/users/cknoettg')
+  .then(response => {
+    cards.appendChild(cardCreator(response.data));
+    console.log(response);
+  })
+  .catch(err => {
+    console.log(err);
+  })
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -80,6 +87,7 @@ function cardCreator(dataObj){
   let anchor = document.createElement("a");
   profile.appendChild(anchor);
   anchor.href = dataObj.html_url;
+  anchor.textContent = dataObj.html_url;
   let followers = document.createElement("p");
   followers.textContent = dataObj.followers;
   let following = document.createElement("p");
@@ -90,7 +98,6 @@ function cardCreator(dataObj){
   cardInfo.appendChild(uname);
   cardInfo.appendChild(location);
   cardInfo.appendChild(profile);
-  cardInfo.appendChild(anchor);
   cardInfo.appendChild(followers);
   cardInfo.appendChild(following);
   cardInfo.appendChild(bio);
@@ -98,5 +105,8 @@ function cardCreator(dataObj){
   return card;
 };
 
-cardCreator(myObj);
+let cards = document.querySelector(".cards");
+
+//moved function up to promise above
+//cards.appendChild(cardCreator(myObj.data));
 
