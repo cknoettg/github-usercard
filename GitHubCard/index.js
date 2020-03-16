@@ -3,9 +3,13 @@
            https://api.github.com/users/<your name>
 */
 
+let myObj = axios.get('https://api.github.com/users/cknoettg');
+
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
+
+   it is a single object with 31 keys
 
    Skip to Step 3.
 */
@@ -53,3 +57,16 @@ const followersArray = [];
   luishrd
   bigknell
 */
+
+function cardCreator(dataObj){
+  //we don't have to iterate because this is a single object, not multiple objects
+  let card = document.createElement("div");
+  card.classList.add("card");
+  let img = document.createElement("img");
+  img.src = dataObj.avatar_url;
+  card.appendChild(img);
+  let cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info");
+  card.appendChild(cardInfo);
+  
+};
