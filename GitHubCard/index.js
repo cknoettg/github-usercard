@@ -37,7 +37,7 @@ let myObj = axios.get('https://api.github.com/users/cknoettg')
 
 const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
 
-followersArray.forEach(follower => {
+followersArray.map(follower => {
   axios.get(`https://api.github.com/users/${follower}`)
   .then(response => {
     cards.appendChild(cardCreator(response.data));
