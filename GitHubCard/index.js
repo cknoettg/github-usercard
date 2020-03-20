@@ -47,6 +47,22 @@ followersArray.map(follower => {
     console.log(err);
   })
 });
+
+//stretch - had to use friend's uname, because I have no followers
+axios.get('https://api.github.com/users/TheTrabin/followers')
+    .then(response => {
+      console.log(response.data)
+      const friends = response.data
+      console.log(friends)
+      friends.forEach(data => {
+        axios.get(`https://api.github.com/users/${data.login}`)
+          .then(info => {
+            const arrayData = info.data
+            const friendCard = cardCreator(arrayData)
+            cards.appendChild(friendCard)
+      })
+    })
+  })
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
 
